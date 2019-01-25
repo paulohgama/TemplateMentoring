@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,600');
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,600');
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+/* @font-face kit by Fonts2u (https://fonts2u.com) */ 
+@font-face {
+    font-family:"COCOGOOSE";
+    font-weight:normal; 
+    font-style:normal;
+    src: url("../fonts/Cocogoose_trial.eot?") format("eot"), 
+         url("../fonts/Cocogoose_trial.woff") format("woff"),
+         url("../fonts/Cocogoose_trial.ttf") format("truetype"), 
+         url("../fonts/Cocogoose_trial.svg#COCOGOOSE") format("svg");
+}
+@font-face {
+    font-family:"COCOGOOSE";
+    font-weight: 300; 
+    font-style: normal;
+    src: url("../fonts/Cocogoose_pro_light-trial.ttf") format("truetype");
+}
+
+// Bootstrap
+@import "node_modules/bootstrap/scss/bootstrap.scss";
+//Notifier
+@import "node_modules/vue-snotify/styles/material.scss";
+
+@import "_variables";
+@import "_mixins";
+@import "_sprites";
+@import "_overrides";
+@import "_keyframes";
+@import "_globals";
+@import "_forms";
+
+
+// Pages
+@import "pages/_index";
+@import "pages/_consultants";
+@import "pages/_contact";
+@import "pages/_buy-minutes";
+@import "pages/_login";
+@import "pages/_chat";
+
+//Consultant Panel
+@import "painel/_dashboard";
+@import "painel/_atendimento";

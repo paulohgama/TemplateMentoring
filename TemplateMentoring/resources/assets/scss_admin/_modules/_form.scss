@@ -1,0 +1,114 @@
+/*FORMS*/
+    @mixin module-form {
+        .form {
+            &__box {
+                margin-bottom: 20px;
+            }
+            .input,
+            [class*="input--"] {
+                padding: 10px;
+                font-size: 14px;
+                background: #fff;
+                
+                &:not(.input-nomargin) {
+                    margin-bottom: 10px;
+                }
+            }
+            .input {
+                color: $gray-color;
+                border: 1px solid lighten($gray-color, 40%);
+                    
+                &:focus {
+                    border-color: lighten($gray-color, 30%);
+                }
+                
+                &--white {
+                    color: lightgray;
+                    border: 1px solid whitesmoke;
+                        
+                    &:focus {
+                        border-color: lightgray;
+                    }
+                }  
+                
+                @each $type in $type-status {
+                    &--#{$type} {
+                        color: nth($color-status, index($type-status, $type));
+                        border: 1px solid lighten(nth($color-status, index($type-status, $type)), 30%);
+                            
+                        &:focus {
+                            border-color: lighten(nth($color-status, index($type-status, $type)), 20%);
+                        }
+                    }
+                }
+            }
+        }
+        //CHECKBOX
+        .checkbox, .radiobox {
+            &__group {
+                cursor: pointer;
+                flex-basis: auto;
+            }
+            &__hidden {
+                display: none;
+                
+                &:not(:checked) + [class*="__fake"] [class*="__check"] {
+                    display: none;
+                }
+            }
+            &__check {
+                border-radius: 10px;
+                width: 100%;
+                
+                &.check-white {
+                    background: #fff;
+                }
+                
+                @each $type in $type-status {
+                    &.check-#{$type} {
+                        background: nth($color-status, index($type-status, $type));
+                    }
+                }
+            }
+            &__fake {
+                padding: 2px;
+                border-width: 2px;
+                border-style: solid;
+                max-width: 18px;
+                min-width: 18px;
+                height: 18px;
+                
+                &.fake-white {
+                    border-color: #fff;
+                }
+                
+                @each $type in $type-status {
+                    &.fake-#{$type} {
+                        border-color: nth($color-status, index($type-status, $type));
+                    }
+                }
+            }
+        }
+        .checkbox {
+            &:not(.checkbox--circle) {
+                .checkbox__fake,
+                .checkbox__check {
+                    border-radius: 2px;
+                }  
+            }
+            &.checkbox--circle {
+                .checkbox__fake,
+                .checkbox__check {
+                    border-radius: 10px;
+                }  
+            }
+            
+        }
+        .radiobox {
+            &__fake,
+            &__check {
+                border-radius: 10px;
+            }
+        }
+    }
+/* /FORMS*/

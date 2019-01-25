@@ -1,0 +1,528 @@
+/*CLASSES*/
+    /*CLASSES*/
+    //DEFAULT
+        .hidden {
+            display: none;
+        }
+        .relative {
+            position: relative;
+        }
+        .overflow {
+            overflow: hidden;
+        }
+    // /DEFAULT
+    
+    //reCAPTCHA
+        .g-recaptcha {
+            transform: scale(0.77);
+            transform-origin: 0 0;
+        }
+    // /reCAPTCHA
+    
+    // /LOADING
+        .loading,
+        [class*="loading--"] {
+            color: $first-color;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        .loading {
+            background: rgba(0, 0, 0, .2);
+            
+            &--white {
+                background: rgba(255, 255, 255, .2);
+            }
+            &--transparent {
+                background: transparent;
+            }
+        }
+    //LOADING
+    
+    //DATA LIST
+        .data-list {
+            @each $type in $type-status {
+                &__item--#{$type} {
+                    border-bottom-width: 2px;
+                    border-bottom-style: solid;
+                    border-bottom-color: #e6e6e6;
+                    
+                    &:hover {
+                       border-bottom-color: nth($color-status, index($type-status, $type)); 
+                    }
+                }
+            }
+        }
+    // /DATA LIST
+    
+    //LISTS
+        .list,
+        [class*="list--"] {
+            .list__item,
+            [class*="list__item"] {
+                position: relative;
+                
+                &:before {
+                    text-shadow: transparent 0 0;
+                    font-size: .6em;
+                    position: absolute;
+                    left: 10px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    transition: .2s;
+                }
+            }
+            .list__item {
+                &:before{
+                   content: "•"; 
+                }
+                &--check {
+                    &:before {
+                        content: "✔";
+                    }
+                }
+                &--arrow-r {
+                    &:before {
+                        content: "►";
+                    }
+                }
+                &--arrow-l {
+                    &:before {
+                        content: "◄";
+                    }
+                }
+            }
+        }
+        .list {
+            .list__item {
+                &:before {
+                    color: inherit;
+                }
+            }
+            &--white [class*="list__item"] {
+                &:before{
+                    color: #fff;
+                }
+            }  
+            @each $type in $type-status {
+                &--#{$type} [class*="list__item"] {
+                    &:before{
+                        color: nth($color-status, index($type-status, $type));
+                    }
+                }  
+            }
+        }
+    // /LISTS
+    
+    //PAGINATION
+        .pagination {
+            .pagination__item {
+                .pagination__link {
+                    padding: 7px 9px;
+                    font-size: 14px;
+                    border-radius: 3px;
+                    
+                    &:not([data-active="true"]) {
+                        color: #fff;
+                        cursor: pointer;
+                        border-width: 1px 1px 3px 1px;
+                        border-style: solid solid inset inset;
+                        border-color: transparent transparent rgba(0, 0, 0, .4) transparent;
+                        box-shadow: 0 .3em .3em rgba(0,0,0,0.3);
+                    }
+                    &[data-active="true"] {
+                        color: gray;
+                    }
+                    &:hover,
+                    &[data-active="true"] {
+                        background: lightgray;
+                        border: 1px solid lightgray;
+                        box-shadow: inset .1em .1em .1em rgba(0, 0, 0, .4);
+                    }
+                }
+            }
+            > .pagination__item {
+                .pagination__link {
+                    &:not([data-active="true"]) {
+                        background: gray;
+                    }
+                }
+            }
+            &__item {
+                margin: 3px;
+            }
+            &__pages {
+                > .pagination__item {
+                    .pagination__link {
+                        &:not([data-active="true"]) {
+                            background: #a7a7a7;
+                        }
+                        &:not(.pagination__arrow):before {
+                            content: attr(data-page);
+                        }
+                    }
+                }
+            }
+        }
+    // /PAGINATION
+    
+    //FORM SEARCH
+        .form-search,
+        [class*="form-search--"] {
+            position: relative;
+            border: 1px solid #e4e4e4;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .form-search {
+            
+            &__input,
+            &__select {
+                border: 1px solid whitesmoke;
+                background: #fff;
+            }
+            &__input,
+            &__select,
+            &__btn {
+                font-size: 12px;
+                padding: 10px;
+            }
+            &__input {
+               color: gray;
+            }
+            &__btn {
+               color: #fff;
+               background: transparent;
+               cursor: pointer;
+               
+               &:hover {
+                   opacity: .9;
+               }
+            }
+           
+            @each $type in $type-status {
+                 &--#{$type} {
+                    .form-search__select {
+                        color: nth($color-status, index($type-status, $type));
+                    }
+                    .form-search__btn {
+                        background: linear-gradient(to bottom, nth($color-status, index($type-status, $type)), darken(nth($color-status, index($type-status, $type)), 10%));
+                    }
+                }  
+            }
+        }
+    // /FORM SEARCH
+    
+    //NAVBAR
+        .navbar {
+            &__item {
+                margin: 0 10px 10px 0;
+                border-width: 2px;
+                border-style: solid;
+                border-color: transparent;
+                
+                &:hover,
+                &[data-active="true"] {
+                    border-color: $second-color;
+                    color: $second-color;
+                }
+                
+                &:not([data-active="true"]) {
+                    cursor: pointer;
+                }
+            }
+            &__option[data-active="false"] {
+                display: none;
+            }
+        }
+    // /NAVBAR
+    
+    //LIST DROP
+        .list-drop {
+            &__number {
+                border-width: 2px;
+                border-style: solid;
+                border-color: lightgray;
+                color: $default-color;
+                border-radius: 50%;
+                width: 30px;
+                height: 30px;
+                
+                &:before {
+                    content: counter( contador );
+                }
+            }
+            &__item {
+                counter-increment: contador;
+                border-bottom-width: 1px;
+                border-bottom-style: solid;
+                border-bottom-color: lightgray;
+                
+                .open-show {
+                    cursor: pointer;
+                    width: 100%;
+                }
+                &[data-active="true"] {
+                    box-shadow: 0 0 0;
+                    height: max-content;
+                    border-bottom-color: lighten($first-color, 10%);
+                    
+                    .list-drop__title[data-hidden] {
+                        display: none;
+                    }
+                    .list-drop__title:not([data-hidden]) {
+                        color: $first-color;
+                    }
+                    .list-drop__arrow {
+                        transform: rotate(-90deg);
+                        color: $first-color;
+                    }
+                    .list-drop__content {
+                        &:not(.content-nopadding) {
+                            padding: 10px 20px 30px;
+                        }
+
+                        max-height: 9999px;
+                        transition: max-height 0.15s ease-in;
+                    }
+                    .list-drop__number {
+                        border-color: $first-color;
+                        background: $first-color;
+                        color: #fff;
+                    }
+                }
+                &[data-active="false"] {
+                    .list-drop__content {
+                        max-height: 0;
+                        overflow: hidden;
+                    }
+                    .list-drop__title {
+                        padding: 20px 20px 20px 0;
+                    }
+                    .list-drop__text {
+                        color: $default-color;
+                    }
+                    .list-drop__arrow {
+                        transform: rotate(90deg);
+                    }
+                }
+            }
+            &__arrow {
+                transition: .2s;
+            }
+        }
+    // /LIST DROP
+    
+    //BOX RADIUS
+        .box-radius {
+            border-radius: 10px;
+        }
+    // /BOX RADIUS
+    
+    //ABSOLUTE CENTER
+        .absolute-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    // /ABSOLUTE CENTER
+    
+    //BOX PASSWORD - SEE PASS
+        .box-password {
+            position: relative;
+            
+             .box-password__input {
+                padding-right: 50px;  
+             }
+             .fa {
+                position: absolute;
+                padding: 5px;
+                right: 5px;
+                top: 50%;
+                transform: translateY(-50%);
+                font-size: 20px;
+                cursor: pointer;
+             }
+        }
+    // /BOX PASSWORD - SEE PASS
+    
+    //POP-UP
+        .pop-up {
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: rgba(0,0,0,.2);
+            width: 100%;
+            height: 100%;
+            max-height: 100%;
+            z-index: 2;
+            cursor: initial;
+            overflow-y: auto;
+            
+            &:not([data-active="true"]) {
+                display: none;
+            }
+            &__box {
+                max-width: 700px;
+            }
+            &__close {
+                background: $danger-color;
+                color: #fff;
+                cursor: pointer;
+                padding: 10px 20px;
+            }
+            &__img {
+                max-height: 250px;
+                border: 1px solid lightgray;
+            }
+        }
+    // /POP-UP
+    
+    //TABLE
+        .table {
+            .th,
+            .td {
+                color: #494949;
+            }
+            .td {
+                font-size: 14px;
+            }
+        }
+        .table-striped {
+            .tbody .tr:nth-child(odd) {
+                background: whitesmoke;
+            }
+        }
+    // /TABLE
+    
+    //BOX INFOS
+        .box-infos,
+        [class*="box-infos--"] {
+            border-radius: 3px;
+            overflow: hidden;
+            box-shadow: .1em .1em .2em rgba(0, 0, 0, .2);
+        }
+        .box-infos {
+            @each $type in $type-status {
+                &--#{$type} .box-infos__icon {
+                    background: nth($color-status, index($type-status, $type));
+                }  
+            }
+            &__icon {
+                padding: 25px;
+                max-width: 85px;
+                
+                .fa {
+                    color: #fff;
+                    font-size: 35px;
+                }
+            }
+            &__content {
+                background: #fff;
+                padding: 5px 10px;
+                min-width: 0;
+            }
+            &__title,
+            &__number {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                display: block;
+            }
+        }
+    // /BOX INFOS
+    
+    //LABELS
+        .label {
+            @each $type in $type-status {
+                &--#{$type} {
+                    background: nth($color-status, index($type-status, $type));
+                }  
+            }
+        }
+        [class*="label--"] {
+            padding: 3px;
+            margin: 2px;
+            font-size: 12px;
+            color: #fff;
+            border-radius: 2px;
+        }
+    // /LABELS
+    
+    //CHECKBOX SWITCH
+        .checkbox-switch {
+            &__box {
+                padding: 10px;
+                background: whitesmoke;
+                border-radius: 30px;
+                border: 2px solid #efefef
+            }
+            &__title {
+                text-transform: uppercase;
+                font-size: 11px;
+                color: gray;
+            }
+            &__input {
+                display: none;
+                
+                &:checked + label:before {
+                    background: inherit;
+                    opacity: 0.5;
+                }
+                &:checked + label:after {
+                    background: inherit;
+                    left: 20px;
+                }
+            }
+            &__label {
+                cursor: pointer;
+                height: 0px;
+                position: relative; 
+                width: 40px;
+                
+                &:before {
+                    background: rgb(0, 0, 0);
+                    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.5);
+                    border-radius: 8px;
+                    content: '';
+                    height: 16px;
+                    position:absolute;
+                    opacity: 0.3;
+                    transition: all 0.4s ease-in-out;
+                    width: 40px;
+                }
+                &:after {
+                    background: rgb(255, 255, 255);
+                    border-radius: 16px;
+                    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+                    content: '';
+                    height: 24px;
+                    left: -4px;
+                    position: absolute;
+                    transition: all 0.3s ease-in-out;
+                    width: 24px;
+                }
+                &:before,
+                &:after {
+                    top: 50%;
+                    transform: translateY(-50%);
+                }
+            }
+            
+            //TYPES
+            @each $type in $type-status {
+                &--#{$type} {
+                    border-color: nth($color-status, index($type-status, $type));
+                    
+                    .checkbox-switch__label {
+                        background: nth($color-status, index($type-status, $type));
+                    }
+                }  
+            }
+        }
+    // /CHECKBOX SWITCH
+/* /CLASSES*/

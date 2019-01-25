@@ -1,0 +1,79 @@
+/*BUTTONS*/
+    @mixin module-button {
+        .btn,
+        [class*="btn--"] {
+            @extend .font-first;
+            cursor: pointer;
+            display: block;
+            font-size: 16px;
+            text-decoration: none;
+            text-align: center;
+            
+            &[disabled] {
+                cursor: not-allowed;
+                opacity: .5;
+            }
+            &.btn-small {
+                padding: 5px 10px;
+            }
+            &:not([disabled]) {
+                cursor: pointer;
+            }
+            &:not(.btn-nomargin) {
+                margin-bottom: 10px;
+            }
+            &:not(.btn-noborder) {
+                border-bottom: 3px inset rgba(0, 0, 0, .2);
+            }
+            &:not(.btn-noradius) {
+                border-radius: 5px;
+            }
+            &:not(.btn-small) {
+                padding: 10px 20px;
+            }
+            .fa {
+                font-size: 18px;
+                
+                &.fa-right {
+                    margin-left: 5px;
+                }    
+                &.fa-left {
+                    margin-right: 5px;
+                }
+            }
+        }
+        .btn {
+            color: #fff;
+            background: $gray-color;
+            
+            &:not([disabled]):hover,
+            &.active,
+            &[data-active="true"] {
+                background: lighten($gray-color, 5%);
+            }
+            
+            &--white {
+                color: gray;
+                background: #fff;
+                
+                &:not([disabled]):hover,
+                &.active,
+                &[data-active="true"] {
+                    background: lightgray;
+                }
+            }  
+            @each $type in $type-status {
+                &--#{$type} {
+                    color: #fff;
+                    background: nth($color-status, index($type-status, $type));
+                    
+                    &:hover,
+                    &.active,
+                    &[data-active="true"] {
+                        background: lighten(nth($color-status, index($type-status, $type)), 5%);
+                    }
+                }
+            }
+        }
+    }
+/* /BUTTONS*/

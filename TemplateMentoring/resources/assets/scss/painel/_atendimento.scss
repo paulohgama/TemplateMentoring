@@ -1,0 +1,186 @@
+#atendimento {
+    margin-bottom: 3%;
+    .wrap {
+        background: $white;
+        border-radius: 5px;
+    }
+    .atendimento-info-box {
+        .wrap {
+            padding: 5%;
+            .title {
+                color: $white;
+                @extend .btn-consult;
+                width: 100%;
+                justify-content: center;
+                border-radius: 8px;
+                margin-top: 30px;
+                &:hover {
+                    background: $orange!important;
+                }
+            }
+            .name {
+                display: block;
+                margin: 15px 0 10px 0;
+                @include fontset(center, $font-montserrat, 16px, 400, initial, $black);
+            }
+        }
+        .atendimento-list {
+            li {
+                &:not(:last-child) {
+                    border-bottom: 1px solid $gray2;
+                    margin-bottom: 12px;
+                }
+                .lbl {
+                    display: block;
+                    margin-bottom: 5px;
+                    @include fontset(center, $font-ccgoose, 14px, 400, initial, $black);
+                }
+                .value {
+                    display: block;
+                    margin-bottom: 10px;
+                    @include fontset(center, $font-montserrat, 14px, 400, initial, $orange);
+                }
+
+            }
+        }
+        @include media($sm, 'max') {
+            margin-bottom: 30px;
+        }
+    }
+    .status-box {
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+        margin-bottom: 30px;       
+        .padded {
+            padding: 3%;
+        }
+        .watchout {
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            padding: 10px;
+            color: $white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-flow: column wrap;
+            h5 {
+                margin-top: 0;
+                @include fontset(center, $font-ccgoose, 16px, 400, initial, $white);
+            }
+            p {
+                @include fontset(center, $font-montserrat, 14px, 300, initial, $white);
+            }
+        }
+        .icon {
+            display: block;
+            background: url('../images/sprites.png');
+            background-repeat: no-repeat;
+            width: 80px;
+            height: 80px;
+        }
+        //classes
+        &.credito-insuficiente {
+            .icon {
+                background-position: -228px -380px;
+            }
+            p span {
+                color: $red;
+            }
+            .watchout { background: $red; }
+        }
+        &.timeout {
+            .icon {
+                background-position: -135px -380px;
+            }
+            p span {
+                color: $red;
+            }
+            .watchout { background: $red; }
+        }
+        &.finalizado-atendente {
+            .icon {
+                background-position: -228px -299px;
+            }
+            p span {
+                color: $color-1;
+            }
+            .watchout { background: $color-1; }
+        }
+        &.finalizado-cliente {
+            .icon {
+                background-position: -135px -299px;
+            }
+            p span {
+                color: $color-1;
+            }
+            .watchout { background: $color-1; }
+        }
+        .main {
+            display: flex;
+            align-items: center;
+            .icon {
+                margin-right: 15px;
+                flex-shrink: 0;
+            }
+        }
+        p {
+            @include fontset(left, $font-ccgoose, 16px, 300, initial, $black);
+            margin-bottom: 0;
+            span {
+                font-weight: 400;
+            }
+        }
+        @include media($sm, 'max') {
+            .watchout {
+                padding: 5px;
+            }
+        }
+    }
+    //LOG
+    .chat-talk-box {
+        min-height: 300px;
+        h4 {
+            padding: 5% 0;
+            @include fontset(center, $font-ccgoose, 16px, 400, uppercase, $black);
+        }
+        .is-empty {
+            border-radius: 5px;
+            background: $red;
+            box-shadow: $black-shadow;
+            padding: 0.5em 0.8em;
+            margin: 1% 3%;
+            @include fontset(center, $font-montserrat, 12px, 300, initial, $white)
+        }
+        .table {
+            thead {
+                th {
+                    border-top: none;
+                }
+            }
+            tbody {
+                tr {
+                    td {
+                        &:first-child {
+                            vertical-align: top;
+                        }
+                        .user-cliente,
+                        .user-atendente {
+                            display: inline-block;
+                            padding: 0.5em;
+                            @extend .btn-painel;
+                            border-radius: 5px;
+                            width: 100px;
+                        }
+                        .user-cliente {
+                            background: $red;
+                        }
+                        .user-atendente {
+                            background: $green;
+                        }
+                    }
+                }   
+            }
+        }
+    }
+}

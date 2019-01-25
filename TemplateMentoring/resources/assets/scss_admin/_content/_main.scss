@@ -1,0 +1,40 @@
+/*MAIN*/
+    .main {
+        background: whitesmoke;
+        
+        &-title {
+           color: gray; 
+        }
+        &-message {
+            text-transform: uppercase;
+            font-size: 12px;
+            color: darkgray;
+        }
+        &__content {
+            padding: 20px;
+        }
+        .content__box,
+        [class*="content__box--"] {
+            background: #fff;
+            border-top-width: 3px;
+            border-top-style: solid;
+            border-radius: 3px;
+            font-size: 18px;
+            box-shadow: 0.1em 0.1em 0.3em rgba(0, 0, 0, .2);
+            
+            &:not(.nopadding) {
+                padding: 5px 10px;
+            }
+        }
+        .content__box {
+            &:not([class*="content__box--"]) {
+                border-top-color: lightgray;
+            }
+            @each $type in $type-status {
+                &--#{$type} {
+                    border-color: nth($color-status, index($type-status, $type));
+                }
+            }
+        }
+    }
+/* /MAIN*/
