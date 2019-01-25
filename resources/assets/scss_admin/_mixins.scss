@@ -1,0 +1,51 @@
+/*MIXINS*/
+    //DEFAULT
+    @mixin open-options--litle {
+        .open-options {
+            .options {
+                position: absolute;
+                top: 0;
+                left: 50px;
+                background: inherit;
+                border-radius: 0 5px 5px 0;
+                min-width: 180px;
+                
+                &-name {
+                    position: relative;
+                    height: 50px;
+                    color: #fff;
+                    padding: 0 40px 0 20px;
+                }
+                .arrow {
+                    position: absolute;
+                    top: 50%;
+                    right: 0;
+                    transform: translateY(-50%);
+                    color: #fff;
+                }
+            }
+            &:not(:hover) {
+                .options {
+                    display: none;
+                }
+            }
+        }
+        .dashboard-box {
+            justify-content: center;
+            display: block !important;
+        }
+        .dashboard-hidden {
+            display: none;
+        }
+        .dashboard-shorter-icon {
+            text-align: center;
+            margin-top: 10px;
+            width: 100% !important;
+        }
+        .dashboard-shorter-item {
+            font-size: 10px;
+            text-align: center !important;
+            padding: 0 2px;
+        }
+    }
+/* /MIXINS*/

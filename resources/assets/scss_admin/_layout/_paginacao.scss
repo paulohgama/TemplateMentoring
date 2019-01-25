@@ -1,0 +1,43 @@
+/*PAGINACAO*/
+
+.pagination, .pagination-new {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
+    margin: 10px 30px;
+    
+    >li {
+        border: 1px solid #fff;
+        padding: 5px 0;
+        color: #000;
+        border-radius: 20px;
+        margin: 0 2px;
+
+        >a,
+         span {
+            padding: 8px 9px;
+            text-decoration: none;
+            color: #000;
+            font-weight: 700;
+            font-size: 14px;
+        }
+        &.active {
+            border: 1px solid $first-color;
+            color: $first-color;
+            &:hover {
+                cursor: not-allowed;
+            }
+        }
+        &.disabled:hover {
+            cursor: not-allowed;
+        }
+        &:hover {
+            border: 1px solid $second-color;
+            color: $second-color;
+        }
+    }
+}
+
+/* /PAGINACAO*/

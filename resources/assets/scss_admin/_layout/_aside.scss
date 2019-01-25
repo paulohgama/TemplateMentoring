@@ -1,0 +1,82 @@
+/*ASIDE*/
+    .aside {
+        position: relative;
+        // background: #212121;
+        background: $first-color;
+        z-index: 1;
+        
+        &-menu {
+            transition: .2s;
+            
+            .open-options,
+            .dashboard-item {
+                &:hover,
+                &[data-active="true"],
+                &.active {
+                    background: $second-color;
+                    
+                    .dashboard-box {
+                        border-left-color: $first-color;
+                        color: #fff;
+                    }
+                } 
+            }
+        }
+    }
+    .dashboard {
+        &-company {
+            // background: rgba(255, 255, 255, .1);
+            background: rgba(255, 255, 255, .7);
+            color: lightgray;
+            white-space: nowrap;
+        }
+        &-title {
+            background: rgba(0, 0, 0, .2);
+            color: #ffffff;
+            font-weight: bolder;
+            font-size: 12px;
+        }
+        &-box {
+            border-left: 3px solid transparent;
+            border-right: 3px solid transparent;
+            color: rgba(255, 255, 255, .8);
+        }
+        &-item {
+            height: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            position: relative;
+            
+            .fa {
+                align-self: center;
+            }
+            .item-name {
+                padding: 15px;
+                font-size: 14px;
+            }
+            .arrow {
+                padding: 0 15px;
+                justify-content: flex-end;
+            }
+            .options-item {
+                padding: 10px 10px 10px 25px;
+                background: rgba(255, 255, 255, .2);
+                color: rgba(255, 255, 255, .6);
+                font-size: 14px;
+                
+                .fa {
+                    font-size: 12px;
+                    margin-right: 5px;
+                    color: inherit;
+                }
+            }
+            .options-item {
+                &:hover,
+                &[data-active="true"],
+                &.active {
+                    color: #fff;
+                }
+            }
+        }
+    }
+/* /ASIDE*/

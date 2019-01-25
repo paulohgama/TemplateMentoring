@@ -1,0 +1,33 @@
+/*
+---------------------------------------------------------------------
+SIZES RESPONSIVE
+    
+XS -> 368px
+SM -> 568px
+MD -> 768px
+LG -> 1024px
+XL -> 1280px
+---------------------------------------------------------------------
+*/
+
+/*MEDIA QUERIES*/
+    //DESKTOP
+    @media (min-width:nth($width-responsive, index($tag-responsive, "md")) + 1px) {
+        @include header-desktop--md;
+        @include aside-desktop--md;
+    }
+    
+    //MOBILE
+    @media (max-width:nth($width-responsive, index($tag-responsive, "lg"))) {
+         @include table-mobile("lg");
+    }
+    @media (max-width:nth($width-responsive, index($tag-responsive, "md"))) {
+        @include header-mobile--md;
+        @include aside-mobile--md;
+        @include breadcrumb-mobile--md;
+        @include table-mobile("md");
+    }
+    @media (max-width:nth($width-responsive, index($tag-responsive, "sm"))) {
+        @include table-mobile("sm");
+    }
+/* /MEDIA QUERIES*/

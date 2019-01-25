@@ -1,0 +1,42 @@
+/*ALERTS*/
+    @mixin module-alert {
+        .alert,
+        [class*="alert--"] {
+            font-size: 14px;
+            padding: 10px 15px;
+            border-left: 5px solid;
+            width: 100%;
+            
+            &:not(.alert-nomargin) {
+                margin-bottom: 15px;
+            }
+        }
+        .alert {
+            color: $gray-color;
+            background: lighten($gray-color, 45%);
+            border-color: $gray-color;
+            
+            &__link {
+                text-decoration: none;
+                font-weight: bolder;
+                color: inherit;
+            }
+            
+            &--white {
+                color: #000;
+                background: white;
+                border-color: #000;
+            }  
+            
+            //NORMAL
+            @each $type in $type-status {
+                    
+                &--#{$type} {
+                    color: nth($color-status, index($type-status, $type));
+                    background: lighten(nth($color-status, index($type-status, $type)), 55%);
+                    border-color: nth($color-status, index($type-status, $type));
+                }  
+            }
+        }
+    }
+/* /ALERTS*/
